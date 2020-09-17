@@ -1,9 +1,9 @@
+import urllib.request
+import json
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
-import os
-import json
-import urllib
 
 url = "https://api.harvestapp.com/v2/users/me"
 headers = {
