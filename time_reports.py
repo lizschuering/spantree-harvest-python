@@ -69,3 +69,4 @@ for result in jsonResponse["results"]:
 # User Project Assigments: https://help.getharvest.com/api-v2/projects-api/projects/projects/
 # Users: https://help.getharvest.com/api-v2/users-api/users/users/
 # Time Report - Team Report API: https://help.getharvest.com/api-v2/reports-api/reports/time-reports/
+
