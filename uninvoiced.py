@@ -3,7 +3,7 @@ import json
 import os
 from dotenv import load_dotenv
 load_dotenv()
-from datetime import date
+import datetime
 
 # Harvest API Documenation: https://help.getharvest.com/api-v2/
 
@@ -28,12 +28,12 @@ response = urllib.request.urlopen(request, timeout=5)
 responseBody = response.read().decode("utf-8")
 jsonResponse = json.loads(responseBody)
 jsonResponsePretty = json.dumps(jsonResponse, indent=2)
-# print(jsonResponsePretty)
+print(jsonResponsePretty)
 
 # See uninvoiced amount for each client
 for result in jsonResponse["results"]:
     if result["uninvoiced_amount"] > 0:
-        print(result["client_name"] + ", " + result["project_name"] + " uninvoiced amount: $" + str(result["uninvoiced_amount"]))
+        print(result["project_name"] + " uninvoiced amount: $" + str(result["uninvoiced_amount"]) + " for the period " + str(start_date) + " to " + str(end_date))
 
 
 # Total up all uninvoiced amounts
@@ -43,4 +43,4 @@ for result in jsonResponse["results"]:
     if result["uninvoiced_amount"] > 0:
         total_uninvoiced += result["uninvoiced_amount"]
 
-print(total_uninvoiced)
+print("Total Univoiced Amount: $" + str(total_uninvoiced) + " for the period " + str(start_date) + " to " + str(end_date))
