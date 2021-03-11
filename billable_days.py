@@ -8,8 +8,8 @@ from datetime import date
 # Harvest API Documenation: https://help.getharvest.com/api-v2/
 
 # Time Period You're Looking At...
-start_date = 20210101
-end_date = 20210131
+start_date = 20210301
+end_date = 20210307
 
 ### Time Reports Endpoint (Reports API) - Client Report ###
 
@@ -34,11 +34,12 @@ responseBody = response.read().decode("utf-8")
 jsonResponse = json.loads(responseBody)
 # print(jsonResponse)
 
-# See a list of all projects and engineering days used in a given time frame using the Time Report's API
-# for result in jsonResponse["results"]:
-#     if result["billable_hours"] > 0:
-#         print(result["client_name"] + ": " +
-#               str(result["billable_hours"] / 8) + " engineering days used.")
+# See a list of all projects and billable days used for a given time period
+print("### Billable Days Used Per Project For the Period " + str(start_date) + " to " + str(end_date) + " ###")
+for result in jsonResponse["results"]:
+    if result["billable_hours"] > 0:
+        print(result["client_name"] + ": " +
+              str(result["billable_hours"] / 8) + " billable days.")
 
 ### Time Reports Endpoint (Reports API) - Team Report ###
 
@@ -59,14 +60,8 @@ jsonResponse = json.loads(responseBody)
 jsonResponsePretty = json.dumps(jsonResponse, indent=2)
 # print(jsonResponsePretty)
 
-# See a list of billable days used by person in a given time period
+# See a list of billable days used by team member for a given time period
+print("### Billable Days Per Team Member For the Period " + str(start_date) + " to " + str(end_date) + " ###")
 for result in jsonResponse["results"]:
-    if result["billable_hours"] > 0:
-        print(result["user_name"] + ": " + str(result["billable_hours"] / 8) + " billable days in the period " + str(start_date) + " to " + str(end_date) + ".")
-
-# Additional APIs to review
-# Projects: https://help.getharvest.com/api-v2/projects-api/projects/projects/
-# User Project Assigments: https://help.getharvest.com/api-v2/projects-api/projects/projects/
-# Users: https://help.getharvest.com/api-v2/users-api/users/users/
-# Time Report - Team Report API: https://help.getharvest.com/api-v2/reports-api/reports/time-reports/
-
+    if result["billable_hours"]:
+        print(result["user_name"] + ": " + str(result["billable_hours"] / 8) + " billable days.")
