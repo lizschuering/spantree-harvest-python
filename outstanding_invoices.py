@@ -26,7 +26,8 @@ jsonResponse = json.loads(responseBody)
 jsonResponsePretty = json.dumps(jsonResponse, indent=2)
 # print(responseBody)
 
-# List all currently unpaid invoies
+# List all currently unpaid invoices
+print("### Outstanding Invoices ###")
 for invoice in jsonResponse["invoices"]:
     print(invoice["client"]["name"] + " | Invoice #" + invoice["number"] + ": $" + str(invoice["amount"]))
 
@@ -34,7 +35,6 @@ for invoice in jsonResponse["invoices"]:
 total_unpaid = 0
 
 for invoice in jsonResponse["invoices"]:
-    print(invoice["client"]["name"] + " | Invoice #" + invoice["number"] + ": $" + str(invoice["amount"]))
     total_unpaid += invoice["amount"]
 
 print("Total Outstanding Invoices: $" + str(total_unpaid))
