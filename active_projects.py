@@ -26,5 +26,5 @@ jsonResponse = json.loads(responseBody)
 # See a list of all active projects using the Project Budget API
 for result in jsonResponse["results"]:
     if result["is_active"] == True:
-        print(result["client_name"] + " " + result["project_name"] + " " + str(result["budget"]))
+        print(result["client_name"] + " " + result["project_name"])
 
