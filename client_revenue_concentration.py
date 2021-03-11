@@ -75,4 +75,4 @@ largest_client = max_key[0]
 find_largest_client = [val for key, val in client_revenues.items() if largest_client in key]
 largest_client_concentration = find_largest_client[0]
 
-print("Highest Client Concentration Ratio - " + largest_client + ": " + "{:.0%}".format(largest_client_concentration))
+print("Largest Client Concentration Ratio - " + largest_client + ": " + "{:.0%}".format(largest_client_concentration))
