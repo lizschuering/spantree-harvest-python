@@ -4,9 +4,9 @@ Interacting with the Harvest API - this time with Python!
 ## How to Run Locally
 
 To run locally, you will need:
-    1. Access to a Harvest account
-    2. A Personal Access Token
-    3. The Account ID for the Harvest account you are interacting with
+1. Access to a Harvest account
+2. A Personal Access Token
+3. The Account ID for the Harvest account you are interacting with
 
 ### Obtaining a Personal Access Token & Account ID
 
@@ -19,4 +19,4 @@ Create a .env file in the root of the project and add the following variables:
     HARVEST_ACCESS_TOKEN = "Your_Token_Goes_Here"
     HARVEST_ACCOUNT_ID = "Your_Account_ID_Goes_Here"
 
-Voila! You are ready to run this project locally on your machine.
+Voila! You are ready to run this project.
