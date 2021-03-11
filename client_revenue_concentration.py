@@ -32,9 +32,10 @@ jsonResponse = json.loads(responseBody)
 # print(responseBody)
 
 # See revenue per client for a given time period
-# for result in jsonResponse["results"]:
-#     if result["billable_amount"] > 0:
-#         print(result["client_name"] + " Revenue for the Period " + str(start_date) + " to " + str(end_date) + ": $" + str(result["billable_amount"]))
+print("### Revenue By Client for the Period " + str(start_date) + " to " + str(end_date) + "###")
+for result in jsonResponse["results"]:
+    if result["billable_amount"] > 0:
+        print(result["client_name"] + " Revenue for the Period " + ": $" + str(result["billable_amount"]))
 
 # See total revenue for a given time period
 total_revenue = 0
@@ -46,15 +47,16 @@ print("Total Revenue for the Period " + str(start_date) + " to " + str(end_date)
 
 # See client revenue as percent of total for a given time period
 client_percent_of_revenue = 0
-client_revenues = {}
+client_revenues = {} #Empty dictionary to gather client & revenue percentages for a given period
 
+print("### Percent of Revenue By Client for the Period " + str(start_date) + " to " + str(end_date) + "###")
 for result in jsonResponse["results"]:
     if result["billable_amount"] > 0:
         client_percent_of_revenue = result["billable_amount"] / total_revenue
         client_revenues[result["client_name"]] = client_percent_of_revenue
-        print(result["client_name"] + " percent of revenue: " + "{:.0%}".format(client_percent_of_revenue) + " for the period " + str(start_date) + " to " + str(end_date))
+        print(result["client_name"] + ": " + "{:.0%}".format(client_percent_of_revenue))
 
-print(client_revenues)
+#print(client_revenues)
 
 # Check for client with highest percentage of revenue for a given time period (largest client concentration ratio)
 max_value = 0
