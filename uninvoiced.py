@@ -28,12 +28,13 @@ response = urllib.request.urlopen(request, timeout=5)
 responseBody = response.read().decode("utf-8")
 jsonResponse = json.loads(responseBody)
 jsonResponsePretty = json.dumps(jsonResponse, indent=2)
-print(jsonResponsePretty)
+# print(jsonResponsePretty)
 
 # See uninvoiced amount for each client
+print("### Uninvoiced Amounts for the Period " + str(start_date) + " to " + str(end_date) + " ###")
 for result in jsonResponse["results"]:
     if result["uninvoiced_amount"] > 0:
-        print(result["project_name"] + " uninvoiced amount: $" + str(result["uninvoiced_amount"]) + " for the period " + str(start_date) + " to " + str(end_date))
+        print(result["project_name"] + ": $" + str(result["uninvoiced_amount"]))
 
 
 # Total up all uninvoiced amounts
