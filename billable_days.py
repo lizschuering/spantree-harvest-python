@@ -65,3 +65,6 @@ print("### Billable Days Per Team Member For the Period " + str(start_date) + " 
 for result in jsonResponse["results"]:
     if result["billable_hours"]:
         print(result["user_name"] + ": " + str(result["billable_hours"] / 8) + " billable days.")
+
+
+print(url)
